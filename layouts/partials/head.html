@@ -1,0 +1,361 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{{- if hugo.IsProduction | and (ne .Params.robotsNoIndex true) }}
+<meta name="robots" content="index, follow">
+{{- else }}
+<meta name="robots" content="noindex, nofollow">
+{{- end }}
+
+{{- /* Title */}}
+<title>
+  {{- if eq .Kind "404" -}}
+    404: Page not found | {{ .Site.Title }}
+  {{- else if and (not .IsHome) .Title -}}
+    {{ .Title }} | {{ .Site.Title }}
+  {{- else -}}
+    {{ .Site.Title }}
+  {{- end -}}
+</title>
+
+{{- /* Meta */}}
+{{- if .IsHome }}
+{{ with site.Params.keywords -}}<meta name="keywords" content="{{- range $i, $e := . }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}">{{ end }}
+{{- else }}
+<meta name="keywords" content="{{ if .Params.keywords -}}
+    {{- range $i, $e := .Params.keywords }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} {{- else }}
+    {{- range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} {{- end -}}">
+{{- end }}
+<meta name="description" content="{{- with .Description }}{{ . }}{{- else }}{{- if or .IsPage .IsSection}}
+    {{- .Summary | default (printf "%s - %s" .Title  site.Title) }}{{- else }}
+    {{- with site.Params.description }}{{ . }}{{- end }}{{- end }}{{- end -}}">
+<meta name="author" content="{{ (partial "author.html" . ) }}">
+<link rel="canonical" href="{{ if .Params.canonicalURL -}} {{ trim .Params.canonicalURL " " }} {{- else -}} {{ .Permalink }} {{- end }}">
+
+{{- /* Styles */}}
+
+{{- /* includes */}}
+{{- $includes := slice }}
+{{- $includes = $includes | append (" " | resources.FromString "assets/css/includes-blank.css")}}
+
+{{- if not (eq site.Params.assets.disableScrollBarStyle true) }}
+    {{- $ScrollStyle := (resources.Get "css/includes/scroll-bar.css") }}
+    {{- $includes = (append $ScrollStyle $includes) }}
+{{- end }}
+
+{{- $includes_all := $includes | resources.Concat "assets/css/includes.css" }}
+
+{{- $theme_vars := (resources.Get "css/core/theme-vars.css") }}
+{{- $reset := (resources.Get "css/core/reset.css") }}
+{{- $media := (resources.Get "css/core/zmedia.css") }}
+{{- $license_css := (resources.Get "css/core/license.css") }}
+{{- $common := (resources.Match "css/common/*.css") | resources.Concat "assets/css/common.css" }}
+
+{{- /* markup.highlight.noClasses should be set to `false` */}}
+{{- $chroma_styles := (resources.Get "css/includes/chroma-styles.css") }}
+{{- $chroma_mod := (resources.Get "css/includes/chroma-mod.css") }}
+
+{{- /* order is important */}}
+{{- $core := (slice $theme_vars $reset $common $chroma_styles $chroma_mod $includes_all $media) | resources.Concat "assets/css/core.css" | resources.Minify }}
+{{- $extended := (resources.Match "css/extended/*.css") | resources.Concat "assets/css/extended.css" | resources.Minify }}
+
+{{- /* bundle all required css */}}
+{{- /* Add extended css after theme style */ -}}
+{{- $stylesheet := (slice $license_css $core $extended) | resources.Concat "assets/css/stylesheet.css"  }}
+
+{{- if not site.Params.assets.disableFingerprinting }}
+{{- $stylesheet := $stylesheet | fingerprint }}
+<link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" integrity="{{ $stylesheet.Data.Integrity }}" rel="preload stylesheet" as="style">
+{{- else }}
+<link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" rel="preload stylesheet" as="style">
+{{- end }}
+
+{{- /* Search */}}
+{{- if (eq .Layout `search`) -}}
+<link crossorigin="anonymous" rel="preload" as="fetch" href="../index.json">
+{{- $fastsearch := resources.Get "js/fastsearch.js" | js.Build (dict "params" (dict "fuseOpts" site.Params.fuseOpts)) | resources.Minify }}
+{{- $fusejs := resources.Get "js/fuse.basic.min.js" }}
+{{- $license_js := resources.Get "js/license.js" }}
+{{- if not site.Params.assets.disableFingerprinting }}
+{{- $search := (slice $fusejs $license_js $fastsearch ) | resources.Concat "assets/js/search.js" | fingerprint }}
+<script defer crossorigin="anonymous" src="{{ $search.RelPermalink }}" integrity="{{ $search.Data.Integrity }}"></script>
+{{- else }}
+{{- $search := (slice $fusejs $fastsearch ) | resources.Concat "assets/js/search.js" }}
+<script defer crossorigin="anonymous" src="{{ $search.RelPermalink }}"></script>
+{{- end }}
+{{- end -}}
+
+{{- /* Favicons */}}
+<link rel="icon" href="{{ site.Params.assets.favicon | default "favicon.ico" | absURL }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ site.Params.assets.favicon16x16 | default "favicon-16x16.png" | absURL }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ site.Params.assets.favicon32x32 | default "favicon-32x32.png" | absURL }}">
+<link rel="apple-touch-icon" href="{{ site.Params.assets.apple_touch_icon | default "apple-touch-icon.png" | absURL }}">
+<meta name="theme-color" content="{{ site.Params.assets.theme_color | default "#2e2e33" }}">
+<meta name="msapplication-TileColor" content="{{ site.Params.assets.msapplication_TileColor | default "#2e2e33" }}">
+
+{{- /* RSS */}}
+{{ range .AlternativeOutputFormats -}}
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type | html }}" href="{{ .Permalink | safeURL }}">
+{{ end -}}
+{{- range .AllTranslations -}}
+<link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+{{ end -}}
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    {{- if (and (ne site.Params.defaultTheme "light") (ne site.Params.defaultTheme "dark")) }}
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+    {{- end }}
+</noscript>
+
+{{- partial "templates/opengraph.html" . }}
+{{- partial "templates/twitter_cards.html" . }}
+{{- partial "templates/schema_json.html" . }}
+
+{{ if and (hugo.IsProduction) (.Site.Params.googleAnalyticsID) }}
+{{- partial "analytics.html" . }}
+{{ end }}
+
+{{ if or .Page.Params.math .Site.Params.math }}
+{{- partial "math.html" .}}
+{{ end }} 
+
+
+<style>
+.social-icons .social-icon-img {
+  width: 26px;
+  height: 26px;
+  vertical-align: middle;
+}
+</style>
+
+<style>
+.social-icons a:hover svg {
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
+}
+.social-icons a svg {
+  transition: opacity 0.15s ease;
+}
+</style>
+
+<style>
+.repo-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0 1.5rem;
+  border: 1px solid rgba(127,127,127,0.3);
+  border-radius: 6px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.repo-card:hover {
+  background: rgba(127,127,127,0.08);
+  border-color: rgba(127,127,127,0.5);
+}
+.repo-card svg { flex-shrink: 0; }
+.repo-card .repo-meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+.repo-card .repo-name {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-weight: 600;
+}
+.repo-card .repo-action {
+  font-size: 0.82rem;
+  opacity: 0.7;
+}
+.repo-card .repo-logo {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.ssrn-card {
+  display: block;
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (!window.mermaid) {
+    var s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
+    document.head.appendChild(s);
+    s.onload = function() { init(); };
+  } else {
+    init();
+  }
+  function init() {
+    mermaid.initialize({ startOnLoad: false, securityLevel: 'loose', theme: 'neutral', fontFamily: 'inherit' });
+    mermaid.run({ querySelector: '.mermaid' });
+  }
+});
+</script>
+
+<style>
+.audit-banner {
+  border-left: 3px solid currentColor;
+  padding: 0.9rem 1.1rem;
+  margin: 1.5rem 0 1.8rem;
+  background: rgba(127,127,127,0.08);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.audit-banner p:first-child { margin-top: 0; }
+.audit-banner p:last-child { margin-bottom: 0; }
+
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0 1.6rem;
+  font-size: 0.92rem;
+  font-variant-numeric: tabular-nums;
+}
+.post-content table th,
+.post-content table td {
+  padding: 0.45rem 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(127,127,127,0.18);
+}
+.post-content table th:not(:first-child),
+.post-content table td:not(:first-child) {
+  text-align: right;
+}
+.post-content table th:first-child,
+.post-content table td:first-child {
+  text-align: left;
+}
+.post-content table thead th {
+  border-bottom: 2px solid rgba(127,127,127,0.35);
+  font-weight: 600;
+  background: rgba(127,127,127,0.04);
+}
+.post-content table tbody tr:hover {
+  background: rgba(127,127,127,0.04);
+}
+
+.post-content {
+  line-height: 1.65;
+}
+.post-content h2, .post-content h3, .post-content h4 {
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+}
+.post-content h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1.8rem 0 0.5rem;
+}
+.post-content h4 {
+  font-size: 1.05rem;
+}
+
+.post-content code {
+  font-size: 0.86em;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  background: rgba(127,127,127,0.1);
+}
+.post-content pre {
+  padding: 0.9rem 1rem;
+  border-radius: 5px;
+  background: rgba(127,127,127,0.08);
+  border: 1px solid rgba(127,127,127,0.18);
+  overflow-x: auto;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+.post-content pre code {
+  padding: 0;
+  background: transparent;
+  font-size: inherit;
+}
+</style>
+
+<style>
+.chart-figure {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1rem 0.5rem;
+  border: 1px solid rgba(127,127,127,0.18);
+  border-radius: 6px;
+  background: rgba(127,127,127,0.03);
+}
+.chart-figure .chart-canvas-wrap {
+  position: relative;
+  width: 100%;
+}
+.chart-figure .chart-canvas-wrap.tall { height: 280px; }
+.chart-figure .chart-canvas-wrap.short { height: 200px; }
+@media (max-width: 600px) {
+  .chart-figure .chart-canvas-wrap.tall { height: 240px; }
+  .chart-figure .chart-canvas-wrap.short { height: 180px; }
+}
+.chart-figure canvas {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+.chart-figure .chart-caption {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(127,127,127,0.15);
+  font-size: 0.82rem;
+  opacity: 0.75;
+  line-height: 1.4;
+  text-align: center;
+}
+.chart-figure .chart-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+  text-align: center;
+  letter-spacing: -0.005em;
+}
+</style>
+<script src="/js/chart.umd.min.js" defer></script>
+
+<style>
+.post-entry .entry-footer, .first-entry .entry-footer, .post-header .post-meta, .post-single .post-meta { display: none !important; }
+</style>

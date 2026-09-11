@@ -1,0 +1,32 @@
+# Hugo build artifacts
+/public/
+/resources/
+.hugo_build.lock
+
+# Local dev caches
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+
+# Sensitive — never commit
+*.env
+.env.*
+*.pem
+*.key
+secrets.yaml
+
+# Working notes & local PDFs (kept under ../_sources/, never in repo)
+../_sources/
+*.pdf
+!static/**/*.pdf
+
+# Theme assets we don't need
+themes/PaperMod/images/

@@ -1,0 +1,18 @@
+{{- $id := .Get "id" | default (.Get 0) -}}
+{{- $papers := site.Data.ssrn_papers -}}
+{{- $paper := false -}}
+{{- range $k, $v := $papers -}}
+  {{- if eq $k $id -}}
+    {{- $paper = $v -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $paper -}}
+  {{- errorf "ssrn shortcode: no paper data for id %q" $id -}}
+{{- end -}}
+<a class="repo-card" href="{{ $paper.ssrn_url }}" target="_blank" rel="noopener">
+  <img src="/social/ssrn.svg" alt="SSRN" class="repo-logo">
+  <div class="repo-meta">
+    <span class="repo-name">{{ $paper.title }}</span>
+    <span class="repo-action">Read on SSRN →</span>
+  </div>
+</a>
