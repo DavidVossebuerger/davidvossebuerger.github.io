@@ -1,6 +1,7 @@
 ---
 title: "PO3 ICT Backtesting Framework"
 date: 2026-01-25
+weight: 1
 author: ["David Vossebürger"]
 description: "Modular Python backtesting framework for empirical evaluation of ICT/PO3 trading strategies across six instruments over 18 years of M30 data."
 summary: "Modular Python framework that translates discretionary ICT concepts (killzones, FVG, order blocks, breaker blocks, CISD) into deterministic, reproducible algorithms and tests them across six instruments."

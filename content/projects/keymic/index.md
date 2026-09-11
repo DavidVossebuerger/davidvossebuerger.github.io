@@ -1,6 +1,7 @@
 ---
 title: "Keymic"
 date: 2026-09-11
+weight: 4
 author: ["David Vossebürger"]
 description: "Push-to-talk voice dictation daemon for Linux with Groq Whisper STT and optional LLM cleanup."
 summary: "Linux push-to-talk dictation daemon: hold a hotkey, speak, release; transcribed text is typed into the focused window via ydotool/xdotool. Python 3.11+, PipeWire audio, Groq Whisper STT."

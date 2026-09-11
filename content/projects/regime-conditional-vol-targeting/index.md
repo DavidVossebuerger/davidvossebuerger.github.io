@@ -1,6 +1,7 @@
 ---
 title: "Regime-Conditional Vol-Targeting"
 date: 2026-09-11
+weight: 3
 author: ["David Vossebürger"]
 description: "Walk-forward, vol-targeted position-sizing rule combining Random Forest vol forecasts with a Gaussian HMM regime classifier and per-state vol-targets."
 summary: "Walk-forward position-sizing rule with Random Forest vol forecast + Gaussian HMM regime classifier (K=3) and per-state vol-targets. 8/9 crypto beat B&H; 115/177 Russell 2000 names beat B&H."

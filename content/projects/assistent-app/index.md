@@ -1,6 +1,7 @@
 ---
 title: "Voice Assistant Backend"
 date: 2026-08-27
+weight: 6
 author: ["David Vossebürger"]
 description: "Voice pipeline: STT (Groq Whisper) → LLM (OpenCode) → TTS (Google Cloud). Personal voice assistant running on a VPS, reachable from phone."
 summary: "Voice pipeline with STT, LLM, and TTS stages running on a VPS. Source is private because the deployment is tightly coupled to the author's server and phone."

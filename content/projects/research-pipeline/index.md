@@ -1,6 +1,7 @@
 ---
 title: "Research-Pipeline"
 date: 2026-09-11
+weight: 5
 author: ["David Vossebürger"]
 description: "Daily arXiv quant-finance paper scoring pipeline with a local LLM and Telegram delivery."
 summary: "Daily arXiv quant-finance paper scoring pipeline with local LLM (Ollama / OpenAI- / Anthropic-compatible backends), SQLite state, two-stage scoring, and Telegram delivery."
