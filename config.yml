@@ -63,8 +63,6 @@ params:
           url: https://ssrn.com/author=10722256
         - name: Google Scholar
           url: https://scholar.google.com/citations?view_op=list_works&hl=en&user=bLv4KQgAAAAJ
-        - name: Discord
-          url: https://discord.com/users/1007581424167161857
 
     assets:
         disableScrollBarStyle: true
