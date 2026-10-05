@@ -1,0 +1,26 @@
+{
+  "6890880": {
+    "id": "6890880",
+    "title": "Regime-Preserving Bootstrap for FX Fair-Value Models",
+    "authors": ["David Vossebürger"],
+    "year": 2026,
+    "venue": "SSRN",
+    "abstract": "Two regime-aware bootstrap resamplers (Regime-Uniform, Regime-Markov) for FX fair-value strategies (BEER, FEER, PPP), validated against naive baselines on three currency pairs with B = 1999 replicates. Regime-Markov reduces bootstrap Sharpe loss by 1.3× vs. Regime-Uniform and 4.6× vs. IID. The Section 11.7 stationarity gate is passed across all Sinkhorn caps 0.5%–10%.",
+    "github": "https://github.com/DavidVossebuerger/MC-Regime",
+    "ssrn_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6890880",
+    "pdf_url": "https://github.com/DavidVossebuerger/MC-Regime/raw/master/docs/paper.pdf",
+    "tags": ["FX", "bootstrap", "BEER", "FEER", "PPP", "regime-detection"]
+  },
+  "6700099": {
+    "id": "6700099",
+    "title": "Auditing ICT/PO3 FX Heuristics: An Independent Empirical Test of the Daily Swing Framework",
+    "authors": ["David Vossebürger"],
+    "year": 2026,
+    "venue": "SSRN",
+    "abstract": "Independent empirical test of two PO3-inspired ICT trading strategies (Daily Swing Framework, Composite) on six instruments over 18 years of M30 data. Result: no risk-adjusted edge under realistic retail transaction costs. Daily Swing delivers Sharpe −3.50 on EURUSD; retail-level spread and slippage erase the rule edge that exists in frictionless backtests.",
+    "github": "https://github.com/DavidVossebuerger/po3-ict-backtesting",
+    "ssrn_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6700099",
+    "pdf_url": "https://github.com/DavidVossebuerger/po3-ict-backtesting/raw/main/docs/paper.pdf",
+    "tags": ["FX", "ICT", "PO3", "backtesting", "negative-results"]
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "rows": [
+    {
+      "symbol": "EURUSD",
+      "strategy": "Daily Swing",
+      "trades": 1624,
+      "wr_pct": 36.6,
+      "pf": 0.3,
+      "dd_pct": 100.0,
+      "sharpe": -3.5
+    },
+    {
+      "symbol": "EURUSD",
+      "strategy": "Composite",
+      "trades": 197,
+      "wr_pct": 46.2,
+      "pf": 0.31,
+      "dd_pct": 69.8,
+      "sharpe": -1.0
+    },
+    {
+      "symbol": "GBPUSD",
+      "strategy": "Daily Swing",
+      "trades": 1545,
+      "wr_pct": 35.2,
+      "pf": 0.25,
+      "dd_pct": 100.0,
+      "sharpe": -3.46
+    },
+    {
+      "symbol": "GBPUSD",
+      "strategy": "Composite",
+      "trades": 218,
+      "wr_pct": 44.5,
+      "pf": 0.24,
+      "dd_pct": 80.7,
+      "sharpe": -1.24
+    },
+    {
+      "symbol": "USDJPY",
+      "strategy": "Daily Swing",
+      "trades": 1617,
+      "wr_pct": 31.9,
+      "pf": 0.21,
+      "dd_pct": 100.0,
+      "sharpe": -3.89
+    },
+    {
+      "symbol": "USDJPY",
+      "strategy": "Composite",
+      "trades": 189,
+      "wr_pct": 49.7,
+      "pf": 0.3,
+      "dd_pct": 71.0,
+      "sharpe": -0.94
+    },
+    {
+      "symbol": "XAUUSD",
+      "strategy": "Daily Swing",
+      "trades": 1508,
+      "wr_pct": 38.4,
+      "pf": 0.47,
+      "dd_pct": 99.8,
+      "sharpe": -2.47
+    },
+    {
+      "symbol": "XAUUSD",
+      "strategy": "Composite",
+      "trades": 185,
+      "wr_pct": 55.1,
+      "pf": 0.46,
+      "dd_pct": 49.5,
+      "sharpe": -0.72
+    },
+    {
+      "symbol": "USA500IDXUSD",
+      "strategy": "Daily Swing",
+      "trades": 151,
+      "wr_pct": 39.7,
+      "pf": 0.13,
+      "dd_pct": 100.0,
+      "sharpe": -1.6
+    },
+    {
+      "symbol": "USA500IDXUSD",
+      "strategy": "Composite",
+      "trades": 108,
+      "wr_pct": 53.7,
+      "pf": 0.18,
+      "dd_pct": 66.1,
+      "sharpe": -0.53
+    },
+    {
+      "symbol": "USATECHIDXUSD",
+      "strategy": "Daily Swing",
+      "trades": 92,
+      "wr_pct": 35.9,
+      "pf": 0.08,
+      "dd_pct": 100.0,
+      "sharpe": -1.46
+    },
+    {
+      "symbol": "USATECHIDXUSD",
+      "strategy": "Composite",
+      "trades": 114,
+      "wr_pct": 53.5,
+      "pf": 0.38,
+      "dd_pct": 46.7,
+      "sharpe": -0.67
+    }
+  ],
+  "source": "https://github.com/DavidVossebuerger/po3-ict-backtesting/blob/main/results/multi_asset_validation.json"
+}

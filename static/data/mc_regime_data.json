@@ -1,0 +1,112 @@
+{
+  "decision": "GO",
+  "n_pairs": 3,
+  "n_blocks": 19,
+  "pairs": [
+    "eurusd",
+    "gbpusd",
+    "usdjpy"
+  ],
+  "orig_sharpe": 0.1346436203357287,
+  "cross_pair_L0": 0.2211037805701674,
+  "L0_losses": {
+    "Regime-Uniform": 0.2977,
+    "IID": 1.0146,
+    "SB": 0.4659,
+    "Regime-Markov": 0.2211,
+    "MBB": 0.4324
+  },
+  "per_pair_sharpe": {
+    "eurusd": 0.2053,
+    "gbpusd": -0.1066,
+    "usdjpy": 0.3052
+  },
+  "loss_table": [
+    {
+      "method": "IID",
+      "L0": 1.0146,
+      "L1": 0.0957,
+      "L2": 0.0957,
+      "L3_fro": 0.5636,
+      "L3_spec": 0.2823,
+      "L4_temporal": 0.3289
+    },
+    {
+      "method": "MBB",
+      "L0": 0.4324,
+      "L1": 0.1275,
+      "L2": 0.1275,
+      "L3_fro": 0.7231,
+      "L3_spec": 0.3534,
+      "L4_temporal": 0.1225
+    },
+    {
+      "method": "SB",
+      "L0": 0.4659,
+      "L1": 0.1202,
+      "L2": 0.1202,
+      "L3_fro": 0.6821,
+      "L3_spec": 0.3337,
+      "L4_temporal": 0.1523
+    },
+    {
+      "method": "Regime-Uniform",
+      "L0": 0.2977,
+      "L1": 0.1324,
+      "L2": 0.1324,
+      "L3_fro": 0.6953,
+      "L3_spec": 0.3223,
+      "L4_temporal": 0.1195
+    },
+    {
+      "method": "Regime-Markov",
+      "L0": 0.2211,
+      "L1": 0.0839,
+      "L2": 0.0839,
+      "L3_fro": 0.5502,
+      "L3_spec": 0.2433,
+      "L4_temporal": 0.0641
+    }
+  ],
+  "cap_sensitivity": [
+    {
+      "cap_pct": 0.5,
+      "tv_drift": 0.0995717986746539,
+      "gate_pass": true
+    },
+    {
+      "cap_pct": 1.0,
+      "tv_drift": 0.0995717986746539,
+      "gate_pass": true
+    },
+    {
+      "cap_pct": 2.0,
+      "tv_drift": 0.0995717986746539,
+      "gate_pass": true
+    },
+    {
+      "cap_pct": 3.0,
+      "tv_drift": 0.0995717986746539,
+      "gate_pass": true
+    },
+    {
+      "cap_pct": 4.0,
+      "tv_drift": 0.0995717986746539,
+      "gate_pass": true
+    },
+    {
+      "cap_pct": 5.0,
+      "tv_drift": 0.0995717986746539,
+      "gate_pass": true
+    },
+    {
+      "cap_pct": 10.0,
+      "tv_drift": 0.0995717986746539,
+      "gate_pass": true
+    }
+  ],
+  "sources": {
+    "decision_json": "https://github.com/DavidVossebuerger/MC-Regime/blob/master/mc_regime/outputs/runs/poc_v14_main/decision.json",
+    "cap_sensitivity_csv": "https://github.com/DavidVossebuerger/MC-Regime/blob/master/mc_regime/outputs/runs/poc_v14_main/sinkhorn_cap_sensitivity.csv"
+  }
+}
