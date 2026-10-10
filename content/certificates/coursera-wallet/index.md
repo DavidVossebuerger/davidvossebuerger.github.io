@@ -53,6 +53,15 @@ These are mostly for mathematical and stat courses outside of finance (I know th
 </div>
 </a>
 </div>
+<div class="cert-card">
+<a class="cert-link" href="https://www.coursera.org/account/accomplishments/verify/1EWLVENDYSJX" target="_blank" rel="noopener">
+<img class="cert-thumb" src="/certificates/coursera/introduction-to-calculus.jpg" alt="Introduction to Calculus certificate">
+<div class="cert-body">
+<p class="cert-title">Introduction to Calculus</p>
+<p class="cert-meta">The University of Sydney</p>
+</div>
+</a>
+</div>
 
 </div>
 
