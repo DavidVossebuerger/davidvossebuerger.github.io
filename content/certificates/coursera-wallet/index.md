@@ -27,6 +27,15 @@ These are mostly for mathematical and stat courses outside of finance (I know th
 <div class="cert-grid">
 
 <div class="cert-card">
+<a class="cert-link" href="https://www.coursera.org/account/accomplishments/verify/1EWLVENDYSJX" target="_blank" rel="noopener">
+<img class="cert-thumb" src="/certificates/coursera/introduction-to-calculus.jpg" alt="Introduction to Calculus certificate">
+<div class="cert-body">
+<p class="cert-title">Introduction to Calculus</p>
+<p class="cert-meta">The University of Sydney</p>
+</div>
+</a>
+</div>
+<div class="cert-card">
 <a class="cert-link" href="https://www.coursera.org/account/accomplishments/verify/B9QV7U7PHGNK" target="_blank" rel="noopener">
 <img class="cert-thumb" src="/certificates/coursera/introduction-to-statistics.jpg" alt="Introduction to Statistics certificate">
 <div class="cert-body">
@@ -50,15 +59,6 @@ These are mostly for mathematical and stat courses outside of finance (I know th
 <div class="cert-body">
 <p class="cert-title">Risk Management and Financial Theory</p>
 <p class="cert-meta">Duke University</p>
-</div>
-</a>
-</div>
-<div class="cert-card">
-<a class="cert-link" href="https://www.coursera.org/account/accomplishments/verify/1EWLVENDYSJX" target="_blank" rel="noopener">
-<img class="cert-thumb" src="/certificates/coursera/introduction-to-calculus.jpg" alt="Introduction to Calculus certificate">
-<div class="cert-body">
-<p class="cert-title">Introduction to Calculus</p>
-<p class="cert-meta">The University of Sydney</p>
 </div>
 </a>
 </div>

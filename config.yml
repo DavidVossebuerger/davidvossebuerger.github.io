@@ -63,6 +63,8 @@ params:
           url: https://ssrn.com/author=10722256
         - name: Google Scholar
           url: https://scholar.google.com/citations?view_op=list_works&hl=en&user=bLv4KQgAAAAJ
+        - name: ORCID
+          url: https://orcid.org/0009-0002-1943-8881
 
     assets:
         disableScrollBarStyle: true
