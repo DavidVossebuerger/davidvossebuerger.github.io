@@ -59,6 +59,8 @@ params:
           url: mailto:david.vossebuerger@proton.me
         - name: GitHub
           url: https://github.com/DavidVossebuerger
+        - name: LinkedIn
+          url: https://www.linkedin.com/in/davidvossebuerger
         - name: SSRN
           url: https://ssrn.com/author=10722256
         - name: Google Scholar
